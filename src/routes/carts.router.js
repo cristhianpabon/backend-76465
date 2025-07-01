@@ -9,13 +9,13 @@ router.post('/', async (req, res) => {
   res.status(201).json(newCart);
 });
 
-router.get('/:cartId', async (req, res) => {
-  const cart = await cartManager.getById(req.params.cartId);
+router.get('/:cid', async (req, res) => {
+  const cart = await cartManager.getById(req.params.cid);
   res.json(cart || { error: 'Carrito no encontrado' });
 });
 
-router.post('/:cartId/product/:productId', async (req, res) => {
-  const updatedCart = await cartManager.addProduct(req.params.cartId, req.params.productId);
+router.post('/:cid/product/:pid', async (req, res) => {
+  const updatedCart = await cartManager.addProduct(req.params.cid, req.params.pid);
   res.json(updatedCart);
 });
 

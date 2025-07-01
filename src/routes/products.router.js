@@ -9,8 +9,8 @@ router.get('/', async (req, res) => {
   res.json(products);
 });
 
-router.get('/:productId', async (req, res) => {
-  const product = await productManager.getById(req.params.productId);
+router.get('/:pid', async (req, res) => {
+  const product = await productManager.getById(req.params.pid);
   res.json(product || { error: 'Producto no encontrado' });
 });
 
@@ -19,13 +19,13 @@ router.post('/', async (req, res) => {
   res.status(201).json(newProduct);
 });
 
-router.put('/:productId', async (req, res) => {
-  const updated = await productManager.update(req.params.productId, req.body);
+router.put('/:pid', async (req, res) => {
+  const updated = await productManager.update(req.params.pid, req.body);
   res.json(updated);
 });
 
-router.delete('/:productId', async (req, res) => {
-  const deleted = await productManager.delete(req.params.productId);
+router.delete('/:pid', async (req, res) => {
+  const deleted = await productManager.delete(req.params.pid);
   res.json(deleted);
 });
 
